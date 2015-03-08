@@ -779,37 +779,37 @@ typedef png_unknown_chunk FAR * FAR * png_unknown_chunkpp;
  */
 typedef struct png_line_index_struct
 {
-   // state of the lz decoder
+   /* state of the lz decoder */
    z_streamp   z_state;
 
-   // the IDAT header position of the chunk, which the index point is in
+   /* the IDAT header position of the chunk, which the index point is in */
    png_uint_32  stream_idat_position;
 
-   // we intend to record the offset of the index point in the chunk,
-   // but we record the number of remaining bytes in the chunk after the
-   // index point. That's because PNG processes a chunk this way.
+   /* we intend to record the offset of the index point in the chunk,
+      but we record the number of remaining bytes in the chunk after the
+      index point. That's because PNG processes a chunk this way. */
    png_uint_32  bytes_left_in_idat;
 
-   // decompressed data of the previous row
+   /* decompressed data of the previous row */
    png_bytep   prev_row;
 } png_line_index;
 typedef png_line_index FAR * png_line_indexp;
 
 typedef struct png_index_struct
 {
-   // A temporary variable used when we build the index. The variable records
-   // the IDAT header position of the last chunk read in so far.
+   /* A temporary variable used when we build the index. The variable records
+      the IDAT header position of the last chunk read in so far. */
    png_uint_32  stream_idat_position;
 
-   // line index information about each passes
+   /* line index information about each passes */
 
-   // the number of index points in each pass
+   /* the number of index points in each pass */
    png_uint_32  size[7];
 
-   // the line span of two index points of each pass
+   /* the line span of two index points of each pass */
    png_uint_32  step[7];
 
-   // the index points of each pass
+   /* the index points of each pass */
    png_line_indexp  *pass_line_index[7];
 } png_index;
 typedef png_index FAR * png_indexp;
